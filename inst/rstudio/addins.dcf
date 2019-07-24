@@ -1,0 +1,5 @@
+
+Name: Add COinS
+Description: Write COinS at the end of the file open in RStudio window
+Binding: coins_this
+Interactive: false

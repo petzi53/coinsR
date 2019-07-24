@@ -1,0 +1,99 @@
+---
+title: "How to use coinsR"
+author: "Peter Baumgartner"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+  pdf_document:
+vignette: >
+  %\VignetteIndexEntry{How to use coinsR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(coinsR)
+```
+
+## What are COinS and why you need it?
+
+[COinS](https://en.wikipedia.org/wiki/COinS) is the abbreviation of "**C**ontext **O**bjects **in S**pans". It refers to a [microformat standard to embed bibliographic metadata as HTML](https://www.univie.ac.at/elib/index.php?title=COinS_Microfromat_Bibliographic_Metadata_for_Embedding_in_HTML). A [COinS string](https://www.questia.com/magazine/1G1-161981672/coins-what-it-stands-for-context-objects-in-spans) includes as HTML code all the information necessary to cite a publication correctly. It works for every type of publication (books, papers, web pages).
+
+The main advantages of COinS is that it can generate citations. COinS embedded in your HTML pages helps your blog readers or website visitors to cite your posts and pages correctly.
+
+There are [several possibilities to generate COinS](https://en.wikipedia.org/wiki/COinS#Client_tools). In a blog entry, I have focused on producing COinS with [Zotero](https://zotero.org). I am not going into further details here, but [I have prepared a tutorial](https://notes.peter-baumgartner.net/2019-06-19-how-to-produce-coins.md") with images from all the necessary steps to produce, embed, and download [COinS](https://www.questia.com/magazine/1G1-161981672/coins-what-it-stands-for-context-objects-in-spans). But this is a quite complicated procedure with several steps. Besides, it works only for every page individually and not automatically for all blog entries of your website.
+
+With `coinsR` you can create COinS metadata programmatically either for one webpage or recursively for all files of a directory. 
+
+## Use cases of `coinsR` and limitations
+
+Before going into the detail of this package, I will summarize what use cases this package support and where it has its limitation. 
+
+The package requires:
+
+1. [Hugo](https://gohugo.io) with the R package [blogdown](https://bookdown.org/yihui/blogdown/)
+2. Config file in the TOML format (config.toml)
+3. Blog entries with YAML frontmatter
+
+I am planning for a future version to loosen the last two limitations and allow it for config.yaml and TOML frontmatter (but not for .json).
+
+## Applying the functions of `coinsR`
+
+There are just two functions:
+
+1. `coins_all(dir = 'content')`: `dir` is a path to a directory to pages with YAML frontmatter. The default value is 'content,' e.g., add COinS to all files of the blogdown website.
+2. `coins_this('path-to-filename')`: You can either use this command from the console with a path to a file name or to apply `COINS` from the RStudio Addins to create a COinS at the end of the currently open file. 
+
+You would get success messages for all files where `coinsR` has added a COinS string at the end of the data.
+
+> Success! COinS added at the end of 'docs/learned.md'.
+
+For a correct citation with COinS the following data are mandatory: 
+
++ Site parameter 'baseurl' in config.toml
++ Site parameter 'description' with the name of the blog/website in config.toml.
++ Author either in frontmatter, config.toml or as 'blogdown.author' options in .Rprofile.
++ A YAML frontmatter (header of the file)
++ A title in the YAML frontmatter
+
+All these missing data will **stop execution** of `coinsR` program with the following error messages:
+
+> No site parameter 'baseurl' in config.toml.
+
+> No site parameter 'description' with the name of the blog/website in config.toml.
+
+> No 'author' found in yaml frontmatter, config.toml and in options (blogdown.author) in '.Rrofile.
+
+> \<filename> has no Yaml header.
+
+> \<filename> has no 'title' in yaml frontmatter.
+
+Other missing data produce a **warning**, but COinS are added to the end of the file anyway.
+
+> \<filename> has no 'slug' in frontmatter; the title is taken."
+
+> \<filename> has no 'date' parameter in YAML frontmatter. Generated system date of today.
+
+> \<filename> has no 'description' in yaml frontmatter.
+
+> \<filename> has no 'copyright' in frontmatter and in config.toml
+
+> \<filename> has no 'DefaultContentLanguage' in frontmatter and in config.toml
+
+COinS does not produce an error if the file name is '_index.md. It skips all index files.
+
+There is another possibility to prevent adding COinS at the end of the file. `coinsR` skips all files, when they have the directive `no_coins: true` in the YAML frontmatter. 
+
+## Some Examples:
+
++ `coins_all()` -- Applies COins recursively at the end of all files under the `content` directory.
++ `coins_all('content/post')` -- Applies COinS recursively at the end of all files under the `content/post`. directory.
++ `coins_this('content//docs/learned.md')` -- Applies a COinS at the end of the file `content//docs/learned.md`.
++ Choosing `COINSR` from the RStudio Addins -- Adds a COinS at the end of the file currently open RStudio.
