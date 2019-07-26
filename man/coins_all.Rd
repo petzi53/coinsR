@@ -29,7 +29,8 @@ Two conditions prevent calling \code{coins_this()}:
 }
 }
 \examples{
+\dontrun{
 coins_all()
-coins_all("content/post")
+coins_all("content/post")}
 
 }

@@ -1,0 +1,26 @@
+## -*- R -*-
+
+
+
+citHeader("To cite R package 'coinsR' in publications use:")
+
+year <- sub("-.*", "", meta$Date)
+vers <- paste("R package version", meta$Version)
+
+
+citEntry(entry = "Misc",
+    title       = "coinsR: Using blogdown with COinS To Generate Bibliographic Metadata For Your Website.",
+    author      = personList(as.person("Peter Baumgartner"),
+                            as.person("Yihui Xie")),
+    address     = "Krems, Austria",
+    coypright   = "CC BY-SA 4.0",
+    year        = year,
+    version     = vers,
+    url         = "https://github.com/petzi53/coinsR",
+
+  textVersion  = paste(
+        "Baumgartner, Peter; Yihui Xie (",
+        year, "). coinsR: Using blogdown with COinS To Generate Bibliographic Metadata For Your Website. ",
+        vers, ". coypright: CC BY-SA 4.0. Krems, Austria. ",
+        "https://github.com/petzi53/coinsR.", sep = "")
+)

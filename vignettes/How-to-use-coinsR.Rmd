@@ -11,16 +11,14 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 ```
 
-```{r setup}
-library(coinsR)
-```
 
 ## What are COinS and why you need it?
 
@@ -28,7 +26,7 @@ library(coinsR)
 
 The main advantages of COinS is that it can generate citations. COinS embedded in your HTML pages helps your blog readers or website visitors to cite your posts and pages correctly.
 
-There are [several possibilities to generate COinS](https://en.wikipedia.org/wiki/COinS#Client_tools). In a blog entry, I have focused on producing COinS with [Zotero](https://zotero.org). I am not going into further details here, but [I have prepared a tutorial](https://notes.peter-baumgartner.net/2019-06-19-how-to-produce-coins.md") with images from all the necessary steps to produce, embed, and download [COinS](https://www.questia.com/magazine/1G1-161981672/coins-what-it-stands-for-context-objects-in-spans). But this is a quite complicated procedure with several steps. Besides, it works only for every page individually and not automatically for all blog entries of your website.
+There are [several possibilities to generate COinS](https://en.wikipedia.org/wiki/COinS#Client_tools). In a [blog entry](https://notes.peter-baumgartner.net/2019/06/19/bibliographic-metadata-for-your-web-page/), I have focused on producing COinS with [Zotero](https://zotero.org). I am not going into further details here, but [I have prepared a tutorial](https://notes.peter-baumgartner.net/tutorial/how-to-produce-bibliographic-metadata-for-you-web-page/) with images from all the necessary steps to produce, embed, and download [COinS](https://www.questia.com/magazine/1G1-161981672/coins-what-it-stands-for-context-objects-in-spans). But this is a quite complicated procedure with several steps. Besides, it works only for every page individually and not automatically for all blog entries of your website.
 
 With `coinsR` you can create COinS metadata programmatically either for one webpage or recursively for all files of a directory. 
 
@@ -69,13 +67,21 @@ All these missing data will **stop execution** of `coinsR` program with the foll
 
 > No site parameter 'description' with the name of the blog/website in config.toml.
 
-> No 'author' found in yaml frontmatter, config.toml and in options (blogdown.author) in '.Rrofile.
+> No 'author' found in yaml frontmatter, config.toml and in options (blogdown.author) in '.Rprofile.
 
 > \<filename> has no Yaml header.
 
 > \<filename> has no 'title' in yaml frontmatter.
 
 Other missing data produce a **warning**, but COinS are added to the end of the file anyway.
+
++ If there is no 'slug' in the frontmatter then the title is taken for the URL.
++ If there is no 'date' parameter in frontmatter then the generated system date of the current date is taken.
++ If there is no 'description' in the frontmatter.
++ If there is no 'copyright' in the frontmatter and in the config.toml.
++ if there is no 'DefaultContentLanguage' in frontmatter and in the config.toml.
+
+The generated warning messages are:
 
 > \<filename> has no 'slug' in frontmatter; the title is taken."
 

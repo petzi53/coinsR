@@ -1,6 +1,6 @@
 ---
 title: Learned
-author: Peter Baumgartner
+author: 'Peter Baumgartner'
 date: '2019-06-04'
 slug: changes
 lastmod: '2019-06-05'
@@ -91,5 +91,15 @@ I noticed that my versions were outdated because of an error message:
     
 After updating both software programs the error message disappeared!
 
+
+<span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Learned%20::%20Open%20Science%20Education&amp;rft.source=Learned&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=This%20is%20a%20test!&amp;rft.identifier=https%3A%2F%2Fnotes.peter-baumgartner.net%2Fdocs%2Fchanges&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=&amp;rft.language=en'></span>
+
+<span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Learned%20::%20Open%20Science%20Education&amp;rft.source=Learned&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=This%20is%20a%20test!&amp;rft.identifier=https%3A%2F%2Fnotes.peter-baumgartner.net%2Fdocs%2Fchanges&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=&amp;rft.language=en'></span>
+
+<span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Learned%20::%20Open%20Science%20Education&amp;rft.source=Learned&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=This%20is%20a%20test!&amp;rft.identifier=https%3A%2F%2Fnotes.peter-baumgartner.net%2Fdocs%2Fchanges&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=&amp;rft.language=en'></span>
+
+<span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Learned%20::%20Open%20Science%20Education&amp;rft.source=Learned&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=This%20is%20a%20test!&amp;rft.identifier=https%3A%2F%2Fnotes.peter-baumgartner.net%2Fdocs%2Fchanges&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=&amp;rft.language=en'></span>
+
+<span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Learned%20::%20Open%20Science%20Education&amp;rft.source=Learned&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=This%20is%20a%20test!&amp;rft.identifier=https%3A%2F%2Fnotes.peter-baumgartner.net%2Fdocs%2Fchanges&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=&amp;rft.language=en'></span>
 
 <span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Learned%20::%20Open%20Science%20Education&amp;rft.source=Learned&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=This%20is%20a%20test!&amp;rft.identifier=https%3A%2F%2Fnotes.peter-baumgartner.net%2Fdocs%2Fchanges&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=&amp;rft.language=en'></span>

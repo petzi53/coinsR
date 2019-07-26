@@ -4,7 +4,7 @@
 
 # THINGS TO DO
 # Different syntax in config.toml and config.yaml
-# Different syntax in toml or yaml frontmatter
+# Different syntax in toml or yaml front matter
 # baseurl not meaningful when using relative URLs?
 # addins for write_coins_all ? (needs shiny interface for path selection)
 
@@ -13,19 +13,19 @@
 #' Add COinS To All Files Of A Directory
 #'
 #' \code{coins_all} looks for all files under the directory and calls with the
-#' appropiate path string for each file \code{coins_this}, which is doing all the
-#' hard work: extracting the information from frontmatter and config file,
+#' appropriate path string for each file \code{coins_this}, which is doing all the
+#' hard work: extracting the information from front matter and config file,
 #' generating the COinS string and adding it to the end of the file.
 #'
 #' Two conditions prevent calling \code{coins_this()}:
 #'
 #' \itemize{
 #' \item File is an index file ('_index-md').
-#' \item The YAML frontmatter contains the directive 'no_coins: yes'.
+#' \item The YAML front matter contains the directive 'no_coins: yes'.
 #' }
 #'
 #' @param dir String. Providing the path to the directory. \code{coins_all}
-#'   looks recursevly at all files under the directory provided by the path
+#'   looks recursivly at all files under the directory provided by the path
 #'   string.
 #'
 #' @return Invisible empty list.
@@ -33,8 +33,9 @@
 #'
 #'
 #' @examples
+#' \dontrun{
 #' coins_all()
-#' coins_all("content/post")
+#' coins_all("content/post")}
 #'
 coins_all = function(dir = 'content') {
     # if (missing(dir)) dir = switch(generator(),
@@ -52,16 +53,16 @@ coins_all = function(dir = 'content') {
 #' Add COinS to visible file in RStudio
 #'
 #' \code{coins_this} adds the COinS string to the end of the file which is
-#' currently open in the RStudio source editor. You can call this funtions via
+#' currently open in the RStudio source editor. You can call this functions via
 #' the RStudio Addins or from the console.
 #'
 #' \code{coins_this} aborts execution if essential information for building a
 #' correct citation is missing:
 #'
 #' \itemize{
-#' \item File has no YAML frontmatter.
-#' \item YAML frontmatter has no title.
-#' \item No author available in frontmatter, config.toml or in options.
+#' \item File has no YAML front matter.
+#' \item YAML front matter has no title.
+#' \item No author available in front matter, config.toml or in options.
 #' \item No baseurl available
 #' }
 #'
@@ -70,6 +71,11 @@ coins_all = function(dir = 'content') {
 #' @return String (Message of success).
 #'
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' coins_this()
+#' coins_this("content/post/filename.md")}
 #'
 coins_this <- function(path='') {
     # get content of document
@@ -90,7 +96,7 @@ coins_this <- function(path='') {
     # get text from config.toml
     configTxt <- readr::read_file("config.toml")
 
-    # get list of yaml data in document frontmatter
+    # get list of yaml data in document front matter
     yamlFrontmatter <- coins_frontmatter(txt, configTxt, coinsAll, path)
 
     # exit if 'no_coins = yes'

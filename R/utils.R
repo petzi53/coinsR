@@ -1,8 +1,8 @@
 # Utilities for the COinS program
 # Sorted Alphabetically:
-# coins_yaml: Combine information from frontmatter and config file
+# coins_yaml: Combine information from front matter and config file
 # coins_config: Collect information from (at the time only) config.toml
-# coins_frontmatter: Collect information from frontmatter of the file(s)
+# coins_frontmatter: Collect information from front matter of the file(s)
 # coins_url: Build the URL of the web page
 # coins_permastring: Utility for coins_url:
 #    Get the permalinks data from config.toml
@@ -33,13 +33,30 @@ coins_yaml <- function(yfrontmatter, yconfig) {
 
     #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     # coinsAuthor
+    # browser()
     coinsAuthor = ''
-    if (!is.null(yfrontmatter$author)) {coinsAuthor = yfrontmatter$author}
-    if ((coinsAuthor == '') && (length(yconfig$author > 1))) {
-        coinsAuthor = yconfig$author
-    } else {
-        coinsAuthor = getOption('blogdown.author')
+    if (coinsAuthor == '' && !is.null(yfrontmatter$author))
+        {coinsAuthor = yfrontmatter$author}
+
+    if (coinsAuthor == '' && !is.null(yconfig$author))
+        {coinsAuthor = yconfig$author}
+
+    if (coinsAuthor == '' && !is.null(getOption('blogdown.author')))
+    {coinsAuthor = getOption('blogdown.author')}
+
+    if (coinsAuthor == '') {
+        # return(stop(paste("No 'author' found in yaml front matter,",
+        #                   "config.toml and in options (blogdown.author) in '.Rrofile'.")), call. = FALSE)
+       stop("Test", call. = FALSE)
     }
+
+
+    # if (!is.null(yfrontmatter$author)) {coinsAuthor = yfrontmatter$author}
+    # if ((coinsAuthor == '') && (length(yconfig$author > 1))) {
+    #     coinsAuthor = yconfig$author
+    # } else {
+    #     coinsAuthor = getOption('blogdown.author')
+    # }
 
     #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     # build list
@@ -65,7 +82,7 @@ coins_frontmatter <- function(docText, configText, coinsAll, fPath) {
     } else {
         # rstudioapi generates a list
         res <- split_yaml_body(docText$contents) # comments already excluded
-        yml <<- res$yaml_list
+        yml <- res$yaml_list
     }
 
     if (length(yml) == 0) return(
@@ -77,49 +94,12 @@ coins_frontmatter <- function(docText, configText, coinsAll, fPath) {
 
     #++++++++++++++++++++++++++++++++++++++++++++++++++++++
     # stop if no document title
-    if (is.null(yml[['title']]))
-        return(stop(paste(fPath, "has no 'title' in yaml frontmatter.")), call. = FALSE)
+    if (is.null(yml[['title']])) {
+        t <- paste(fPath, "has no 'title' in yaml front matter.")
+        stop(t, call. = FALSE)
+    }
 
     #++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    # stop if no author is available
-    # first check if all three options to get an author name fail
-
-    coinsAuthor = ''
-
-    # 1.) yaml frontmatter has precedence
-    if (!is.null(yml[['author']])) { coinsAuthor = yml[['author']] } # assign it
-
-    # 2.) extract line from config.toml with a match of 'autor' followed by space(s) and/or '='
-    if (coinsAuthor == '') { # no author in frontmatter
-        testAuthor <- stringr::str_extract(configText, regex('.*?author\\s=.*\n', multiline = TRUE))
-        # check for comment and remove everything after '#'
-        testAuthor <- gsub('\\s*#.+', '', testAuthor)
-        if (!is.null(testAuthor)) {
-            coinsAuthor = testAuthor # still to check if empty string because of comment
-        } else if (!is.na(testAuthor)) {
-            coinsAuthor = testAuthor
-        }
-    }
-
-    # 3.) look up 'blogdown.author'
-    if (coinsAuthor == '') { # still no author
-        testAuthor <- getOption('blogdown.author')
-        # check for comment and remove everything after '#'
-        testAuthor <- gsub('\\s*#.+', '', testAuthor)
-        if (!is.null(testAuthor)) {
-            coinsAuthor = testAuthor
-        } else if (!is.na(testAuthor)) {
-            coinsAuthor = testAuthor
-        }
-    }
-
-    # 4.) Stop with error message if no author available
-    if (coinsAuthor == '') { # Did not find author in all three options above
-        return(stop(paste("No 'author' found in yaml frontmatter,
-                          config.toml and in options (blogdown.author) in '.Rrofile'.")), call. = FALSE)
-    }
-
-    #+++++++++++++++++++++++++++++++++++++++++++++++++
     # warn if no slug, then take title of document
     if (is.null(yml[['slug']])) {
         titleString <- yml[['title']]
@@ -127,20 +107,20 @@ coins_frontmatter <- function(docText, configText, coinsAll, fPath) {
         # conert to lower and replace several spaces with only one dash
         slugString <- gsub('\\s+',"-", stringr::str_to_lower(titleString))
         yml[['slug']] <- slugString
-        warning(paste(fPath, "has no 'slug' in frontmatter; the title is taken."), call. = FALSE)
+        warning(paste(fPath, "has no 'slug' in front matter; the title is taken."), call. = FALSE)
     }
 
     #+++++++++++++++++++++++++++++++++++++++++++++++++
     # warn if no date: generate date from 'Sys.Date()'
     if (is.null(yml[['date']])) {
-        warning(paste(fPath, "has no 'date' parameter in yaml frontmatter. Generated system date of today."), call. = FALSE)
+        warning(paste(fPath, "has no 'date' parameter in yaml front matter. Generated system date of today."), call. = FALSE)
         yml[['date']] = Sys.Date()
     }
 
     #+++++++++++++++++++++++++++++++++++++++++++++++
     # warn if document has no description (abstract)
     if (is.null(yml[['description']])) {
-        warning(paste(fPath, "has no 'description' in yaml frontmatter."), call. = FALSE)
+        warning(paste(fPath, "has no 'description' in yaml front matter."), call. = FALSE)
         yml[['description']] = ''
     }
     return(yml)
@@ -161,14 +141,14 @@ coins_config <- function(yamlList, fPath) {
     coinsBlogTitle <- configList[['title']]
 
     #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    # warn if no copyright (yaml frontmatter has precedence)
+    # warn if no copyright (yaml front matter has precedence)
     coinsCopyright = ''
     if (!(is.null(yamlList$copyright))) {
         coinsCopyright = yamlList$copyright
     } else {(!(is.null(configList[['copyright']])))
         coinsCopyright = configList[['copyright']]
     }
-    if (coinsCopyright == '') warning(paste(fPath, "has no 'copyright' in frontmatter and in config.toml."), call. = FALSE)
+    if (coinsCopyright == '') warning(paste(fPath, "has no 'copyright' in front matter and in config.toml."), call. = FALSE)
 
     #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     # warn if no DefaultContentLanguage (How about multilingual site?)
@@ -178,7 +158,7 @@ coins_config <- function(yamlList, fPath) {
     } else {(!(is.null(configList[['DefaultContentLanguage']])))
         coinsLanguage = configList[['DefaultContentLanguage']]
     }
-    if (coinsLanguage == '') warning(paste(fPath, "has no 'DefaultContentLanguage' in frontmatter and in config.toml."), call. = FALSE)
+    if (coinsLanguage == '') warning(paste(fPath, "has no 'DefaultContentLanguage' in front matter and in config.toml."), call. = FALSE)
 
     #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     # store data in list
@@ -310,17 +290,30 @@ rmd_pattern = '[.][Rr](md|markdown)$'
 md_pattern  = '[.][Rr]?(md|markdown)$'
 
 fetch_yaml = bookdown:::fetch_yaml
-
-# is_blank = knitr:::is_blank
-
 load_config = blogdown:::load_config
-split_yaml_body = blogdown:::split_yaml_body
+yaml_load = blogdown:::yaml_load
 fetch_yaml = function(f) fetch_yaml(xfun::read_utf8(f))
 
-# is_blank = function(x) {
-#     if (length(x)) all(grepl('^\\s*$', x)) else TRUE
-# }
+# the next two functions are necessry because of a call to knitr::is_blank from split_yaml_body
+# see: https://stackoverflow.com/questions/57191965/rcmd-check-unexported-objects-imported-by-calls-i-have-never-used
+is_blank = function(x) {
+    if (length(x)) all(grepl('^\\s*$', x)) else TRUE
+}
 
+split_yaml_body = function(x) {
+    i = grep('^---\\s*$', x)
+    n = length(x)
+    res = if (n < 2 || length(i) < 2 || (i[1] > 1 && !is_blank(x[seq(i[1] - 1)]))) {
+        list(yaml = character(), body = x)
+    } else list(
+        yaml = x[i[1]:i[2]], yaml_range = i[1:2],
+        body = if (i[2] == n) character() else x[(i[2] + 1):n]
+    )
+    res$yaml_list = if ((n <- length(res$yaml)) >= 3) {
+        yaml_load(res$yaml[-c(1, n)])
+    }
+    res
+}
 
 
 

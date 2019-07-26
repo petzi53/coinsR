@@ -5,3 +5,5 @@
 ^content$
 ^doc$
 ^Meta$
+^cran-comments.md$
+^revdep$

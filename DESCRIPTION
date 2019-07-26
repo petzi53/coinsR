@@ -1,14 +1,20 @@
 Package: coinsR
 Type: Package
-Title: Using COinS To Generate Bibliographic Metadata For Your Website 
-Version: 0.0.0.9000
-Authors@R:
+Title: coinsR: Using COinS To Generate Bibliographic Metadata For Your Website 
+Version: 0.1.0
+Authors@R: c(
     person("Peter", "Baumgartner", email = "petzi53@gmail.com", 
-    role = c("aut", "cre"), comment = c(ORCID = "0000-0003-4526-8791"))
+    role = c("aut", "cre"), comment = "https://orcid.org/0000-0003-4526-8791"),
+    person("Yihui", "Xie", email = "xie@yihui.name",
+    role = "ctb", comment = "https://orcid.org/0000-0003-0645-5666"))
 Description: Generate bibliographic metadata for your (blogdown / Hugo) 
     website using COinS (Context Object in Spans).
+Roxygen: list(markdown = TRUE)
+Date: 2019-07-26
 License: GPL-3
 Encoding: UTF-8
+Language: en-US
+NeedsCompilation: no
 RoxygenNote: 6.1.1
 Suggests:
     knitr,
@@ -28,6 +34,8 @@ Imports:
 Depends:
     blogdown
 LazyData: true
+Maintainer: Peter Baumgartner <petzi53@gmail.com>
+Repository: CRAN
 URL: https://github.com/petzi53/coinsR
 BugReports: https://github.com/petzi53/coinsR/issues
 SystemRequirements: Hugo (<https://gohugo.io>) and Pandoc (<https://pandoc.org>

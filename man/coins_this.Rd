@@ -28,3 +28,9 @@ correct citation is missing:
 \item No baseurl available
 }
 }
+\examples{
+\dontrun{
+coins_this()
+coins_this("content/post/filename.md")}
+
+}
