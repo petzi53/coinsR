@@ -8,7 +8,7 @@ coins_all(dir = "content")
 }
 \arguments{
 \item{dir}{String. Providing the path to the directory. \code{coins_all}
-looks recursevly at all files under the directory provided by the path
+looks recursivly at all files under the directory provided by the path
 string.}
 }
 \value{
@@ -16,8 +16,8 @@ Invisible empty list.
 }
 \description{
 \code{coins_all} looks for all files under the directory and calls with the
-appropiate path string for each file \code{coins_this}, which is doing all the
-hard work: extracting the information from frontmatter and config file,
+appropriate path string for each file \code{coins_this}, which is doing all the
+hard work: extracting the information from front matter and config file,
 generating the COinS string and adding it to the end of the file.
 }
 \details{
@@ -25,7 +25,7 @@ Two conditions prevent calling \code{coins_this()}:
 
 \itemize{
 \item File is an index file ('_index-md').
-\item The YAML frontmatter contains the directive 'no_coins: yes'.
+\item The YAML front matter contains the directive 'no_coins: yes'.
 }
 }
 \examples{

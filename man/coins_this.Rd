@@ -14,7 +14,7 @@ String (Message of success).
 }
 \description{
 \code{coins_this} adds the COinS string to the end of the file which is
-currently open in the RStudio source editor. You can call this funtions via
+currently open in the RStudio source editor. You can call this functions via
 the RStudio Addins or from the console.
 }
 \details{
@@ -22,9 +22,9 @@ the RStudio Addins or from the console.
 correct citation is missing:
 
 \itemize{
-\item File has no YAML frontmatter.
-\item YAML frontmatter has no title.
-\item No author available in frontmatter, config.toml or in options.
+\item File has no YAML front matter.
+\item YAML front matter has no title.
+\item No author available in front matter, config.toml or in options.
 \item No baseurl available
 }
 }
