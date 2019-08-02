@@ -19,15 +19,9 @@ With `coinsR` you can create COinS metadata programmatically either for one webp
 
 ## Installation
 
+`remotes::install_github('petzi53/coinsR', build_vignettes = TRUE)`
 
-### Install from CRAN
-
-`install.packages('coinsR')`
-
-### Install from GitHub
-
-`remotes::install_github('petzi53/coinsR')`
-
+I am trying to prepare `coinsR` as an R packages distributed via the [CRAN repository](https://cran.r-project.org/). But as I am still not very experienced in R programming I am not sure if I will succeed. 
 
 ## Use cases of `coinsR` and limitations
 
